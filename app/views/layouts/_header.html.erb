@@ -1,0 +1,49 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-danger">
+    <div class="container">
+      <a class="navbar-brand" href="/"><%= image_tag 'rails.png', size: '280x100' %></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          <% if request.path.match(/\/admin(\/)?/) && admin_signed_in?%>
+            <li>
+              <%= link_to destroy_admin_session_path, class:"a-header", method: :delete do %>
+                <div class="nav-link text-dark a-header rounded-pill">ログアウト</div>
+              <% end %>
+            </li>
+          <% elsif request.path.match(/\/admin(\/)?/) %>
+            <li>
+              <%= link_to new_admin_session_path, class:"a-header" do %>
+                <div class="nav-link text-dark a-header rounded-pill">ログイン</div>
+              <% end %>
+            </li>
+          <% elsif user_signed_in? %>
+            <li>
+              <%= link_to destroy_user_session_path, class:"a-header", method: :delete do %>
+                <div class="nav-link text-dark a-header rounded-pill">ログアウト</div>
+              <% end %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to new_user_registration_path, class:"a-header" do %>
+                <div class="nav-link text-dark a-header rounded-pill">アカウント作成</div>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to new_user_session_path, class:"a-header" do %>
+                <div class="nav-link text-dark a-header rounded-pill">ログイン</div>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to users_guest_sign_in_path, class:"a-header", method: :post do %>
+                <div class="nav-link text-dark a-header rounded-pill">ゲストログイン(閲覧用)</div>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
