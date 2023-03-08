@@ -1,0 +1,22 @@
+<h1>投稿フォーム</h1>
+<%= form_with model: @event, url: events_path, method: :post, local:true do |f| %>
+
+  <h4>イベント名</h4>
+  <%= f.text_field :name %>
+
+  <h4>イベント説明文</h4>
+  <%= f.text_area :introduction %>
+
+  <h4>イベント期間開始日</h4>
+  <%= f.date_field :season_start %>
+
+  <h4>イベント期間終了日</h4>
+
+  <h4>イベント開始時間</h4>
+
+  <h4>イベント終了時間</h4>
+
+  <h4>イベント場所</h4>
+
+  <h4>イベント料金</h4>
+<% end %>
