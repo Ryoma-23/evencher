@@ -1,2 +1,31 @@
-<h1>Public::Events#edit</h1>
-<p>Find me in app/views/public/events/edit.html.erb</p>
+<h4>イベント情報編集</h4>
+<%= form_with model: @event, url: event_path(@event.id), method: :patch do |f| %>
+  <h4>イベントイメージ画像</h4>
+  <%= f.file_field :event_image, accept: "image/*" %>
+
+  <h4>イベント名</h4>
+  <%= f.text_field :name %>
+
+  <h4>イベント説明文</h4>
+  <%= f.text_area :introduction %>
+
+  <h4>イベント期間開始日</h4>
+  <%= f.date_field :season_start, value: @event.season_start %>
+
+  <h4>イベント期間終了日</h4>
+  <%= f.date_field :season_end, value: @event.season_end %>
+
+  <h4>イベント開始時間</h4>
+  <%= f.time_field :time_start, value: @event.time_start %>
+
+  <h4>イベント終了時間</h4>
+  <%= f.time_field :time_end, value: @event.time_end %>
+
+  <h4>イベント場所</h4>
+  <%= f.text_field :place %>
+
+  <h4>イベント料金</h4>
+  <%= f.text_field :price %>
+
+  <%= f.submit "保存" %>
+<% end %>

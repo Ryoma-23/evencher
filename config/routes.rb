@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: 'homes#top'
-    resources :events, only: [:new, :create, :index, :show, :edit]
+    resources :events, only: [:new, :create, :index, :show, :edit, :update, :destroy]
   end
 
   devise_scope :user do
