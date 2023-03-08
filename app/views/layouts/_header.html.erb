@@ -21,6 +21,11 @@
             </li>
           <% elsif user_signed_in? %>
             <li>
+              <%= link_to new_event_path, class:"a-header" do %>
+                <div class="nav-link text-dark a-header rounded-pill">イベント投稿</div>
+              <% end %>
+            </li>
+            <li>
               <%= link_to destroy_user_session_path, class:"a-header", method: :delete do %>
                 <div class="nav-link text-dark a-header rounded-pill">ログアウト</div>
               <% end %>

@@ -1,2 +1,16 @@
-<h1>Public::Events#index</h1>
-<p>Find me in app/views/public/events/index.html.erb</p>
+<h4>イベント一覧</h4>
+<% @event.each do |event| %>
+  <div>
+    <%= link_to event_path(event.id) do %>
+      <div><%= image_tag event.get_image, size: "150x150" %></div>
+      <div>イベント名<%= event.name %></div>
+      <div>イベント説明<%= event.introduction %></div>
+      <div>イベント開催日<%= event.season_start %>〜<%= event.season_end %></div>
+      <div>時間<%= event.time_start.strftime("%H:%M") %>〜<%= event.time_end.strftime("%H:%M") %></div>
+      <div>場所<%= event.place %></div>
+      <div>料金<%= event.price %></div>
+      <div>ユーザー画像<%= image_tag "no_image.jpg", size: "100x100" %></div>
+      <div>ユーザーネーム<%= event.user.name %></div>
+    <% end %>
+  </div>
+<% end %>
