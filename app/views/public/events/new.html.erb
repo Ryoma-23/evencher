@@ -1,32 +1,37 @@
-<h1>投稿フォーム</h1>
-<%= form_with model: @event, url: events_path, method: :post, local:true do |f| %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 col-sm-12 mx-6 mx-sm-auto px-auto my-5">
+      <h3 class="mb-5 border-bottom text-center"><span>イベント情報新規投稿</span></h3>
+      <%= form_with model: @event, url: events_path, method: :post, local:true do |f| %>
+        <div class="mx-auto">
+          <dl class="row">
+            <dt class="col-3 mb-3"><%= f.label :event_image, "イベント画像", class: "text-right" %></dt>
+            <dd class="col-8 mb-3"><%= f.file_field :event_image, class: "form-control", accept: "image/*" %></dd>
 
-  <h4>イベントイメージ画像</h4>
-  <%= f.file_field :event_image, accept: "image/*" %>
-  
-  <h4>イベント名</h4>
-  <%= f.text_field :name %>
+            <dt class="col-3 mb-3"><%= f.label :name, "イベント名", class: "text-right" %></dt>
+            <dd class="col-8 mb-3"><%= f.text_field :name, class: "form-control name", placeholder: "イベント名" %></dd>
 
-  <h4>イベント説明文</h4>
-  <%= f.text_area :introduction %>
+            <dt class="col-3 mb-3"><%= f.label :introduction, "イベント説明", class: "text-right" %></dt>
+            <dd class="col-8 mb-3"><%= f.text_area :introduction, class: "form-control information", placeholder: "ここに説明文を記述します" %></dd>
 
-  <h4>イベント期間開始日</h4>
-  <%= f.date_field :season_start, value: @event.season_start %>
-
-  <h4>イベント期間終了日</h4>
-  <%= f.date_field :season_end, value: @event.season_end %>
-
-  <h4>イベント開始時間</h4>
-  <%= f.time_field :time_start, value: @event.time_start %>
-
-  <h4>イベント終了時間</h4>
-  <%= f.time_field :time_end, value: @event.time_end %>
-
-  <h4>イベント場所</h4>
-  <%= f.text_field :place %>
-
-  <h4>イベント料金</h4>
-  <%= f.text_field :price %>
-  
-  <%= f.submit '投稿' %>
-<% end %>
+            <dt class="col-3 mb-3"><%= f.label :seasons, "イベント期間", class: "text-right" %></dt>
+            <dd class="col-8 mb-3"><%= f.date_field :season_start, value: @event.season_start %>〜<%= f.date_field :season_end, value: @event.season_end %></dd>
+            
+            <dt class="col-3 mb-3"><%= f.label :times, "イベント時刻", class: "text-right" %></dt>
+            <dd class="col-8 mb-3"><%= f.time_select :time_start, value: @event.time_start %>〜<%= f.time_select :time_end, value: @event.time_end %></dd>
+            
+            <dt class="col-3 mb-3"><%= f.label :times, "イベント場所", class: "text-right" %></dt>
+            <dd class="col-8 mb-3"><%= f.text_field :place, class: "form-control place", placeholder: "イベント場所" %></dd>
+            
+            <dt class="col-3 mb-3"><%= f.label :times, "イベント料金", class: "text-right" %></dt>
+            <dd class="col-8 mb-3 input-group d-flex align-items-end"><%= f.text_field :price, class: "form-control price", placeholder: "イベント料金" %>円</dd>
+            
+          </dl>
+          <div class="text-center">
+            <%= f.submit "投稿", class:"btn btn-success btn-lg" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
