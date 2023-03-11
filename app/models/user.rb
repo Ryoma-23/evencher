@@ -5,12 +5,27 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :events, dependent: :destroy
+  
+  has_one_attached :profile_image
+  
+  def get_profile_image
+    unless profile_image.attached?
+      file_path = Rails.root.join('app/assets/images/icon_no_image.jpg')
+      profile_image.attach(io: File.open(file_path), filename: "default-image.jpg", content_type: "image/jpeg")
+    end
+    profile_image
+  end
 
-  def self.guest
+  def self.guest #ゲストログイン
     find_or_create_by!(email: 'guest@guest.com') do |user|
       user.password = SecureRandom.urlsafe_base64
       # end_user.confirmed_at = Time.now
       user.name = "ゲスト"
     end
+  end
+  
+  # is_deletedがfalseならtrueを返すようにしている
+  def active_for_authentication?
+    super && (is_deleted == false)
   end
 end

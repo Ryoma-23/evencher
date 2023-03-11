@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 col-sm-12 mx-6 mx-sm-auto px-auto my-5">
+      <h3 class="mb-5 border-bottom text-center"><span>プロフィール編集</span></h3>
+      <%= form_with model: @user, url: user_path(@user.id), method: :patch do |f| %>
+        <div class="mx-auto">
+          <dl class="row">
+            <dt class="col-3 mb-3"><%= f.label :profile_image, "プロフィール画像", class: "text-right" %></dt>
+            <dd class="col-8 mb-3"><%= f.file_field :profile_image, class: "form-control", accept: "image/*" %></dd>
+
+            <dt class="col-3 mb-3"><%= f.label :name, "名前", class: "text-right" %></dt>
+            <dd class="col-8 mb-3"><%= f.text_field :name, class: "form-control name", placeholder: "名前" %></dd>
+
+            <dt class="col-3 mb-3"><%= f.label :email, "メールアドレス", class: "text-right" %></dt>
+            <dd class="col-8 mb-3"><%= f.text_field :email, class: "form-control information", placeholder: "sample@mail.com" %></dd>
+
+          </dl>
+          <div class="form-group row my-5">
+            <%= f.submit "変更を保存", class:"btn btn-success col-4 offset-4" %>
+            <%= link_to "退会する", check_users_path, class:'btn btn-danger col-2 offset-2' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

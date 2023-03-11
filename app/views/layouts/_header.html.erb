@@ -26,6 +26,16 @@
               <% end %>
             </li>
             <li>
+              <%= link_to events_path, class:"a-header" do %>
+                <div class="nav-link text-dark a-header rounded-pill">イベント一覧</div>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to user_path(current_user.id), class:"a-header" do %>
+                <div class="nav-link text-dark a-header rounded-pill">マイページ</div>
+              <% end %>
+            </li>
+            <li>
               <%= link_to destroy_user_session_path, class:"a-header", method: :delete do %>
                 <div class="nav-link text-dark a-header rounded-pill">ログアウト</div>
               <% end %>

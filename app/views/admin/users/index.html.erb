@@ -1,0 +1,38 @@
+<div class="container my-5">
+  <div class="row">
+    <h4 class="mb-4 ml-5">ユーザー一覧</h4>
+  </div>
+  <div class="row px-5">
+    <table class="table table-hover table-inverse">
+      <thead>
+        <tr>
+          <th>ユーザーID</th>
+          <th>アイコン</th>
+          <th>氏名</th>
+          <th>メールアドレス</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= image_tag user.get_profile_image, size: "50x50" %></td>
+          <td><%= link_to user.name,admin_user_path(user.id), class: "text-dark border-bottom border-dark" %></td>
+          <td><%= user.email %></td>
+          <td>
+            <% if user.is_deleted == false %>
+              <strong class="text-success">有効</strong>
+            <% else %>
+              <strong class="test-muted">退会</strong>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+  <!--<div class="row justify-content-center my-5">-->
+  <!--  <= paginate @customers %>-->
+  <!--</div>-->
+</div>

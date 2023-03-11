@@ -1,3 +1,12 @@
+<div>
+  <%= image_tag @user.get_profile_image, size: "100x100" %>
+  <h3><%= @user.name %></h3>
+  <%= @user.email %>
+  <% if @user == current_user %>
+    <%= link_to "プロフィール編集", edit_user_path %>
+  <% end %>
+</div>
+
 <div class="container">
   <div class="row my-5">
     <% @event.each do |event| %>
