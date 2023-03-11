@@ -9,4 +9,12 @@ class Event < ApplicationRecord
     end
     event_image
   end
+  
+  def self.search(search)
+    if search != ""
+      Event.where(['name LIKE(?) OR place LIKE(?)', "%#{search}%", "%#{search}%"])
+    else
+      Event.includes(:user).order('created_at DESC')
+    end
+  end
 end

@@ -9,7 +9,11 @@ Rails.application.routes.draw do
   
   scope module: :public do
     root to: 'homes#top'
-    resources :events, only: [:new, :create, :index, :show, :edit, :update, :destroy]
+    resources :events, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
+      collection do
+        get "search"
+      end
+    end
     resources :users, only: [:show, :edit, :update] do
       get :check, on: :collection
       patch :withdrawal, on: :collection
