@@ -16,6 +16,10 @@
         <div>場所  <%= @event.place %></div>
       
         <div>料金  <%= @event.price %></div>
+        
+        <% @event_tags.each do |tag| %>
+          <div><%= tag.tagname %><%= "(#{tag.event_tags.count})" %></div>
+        <% end %>
       
         <div>ユーザー画像<%= image_tag @event.user.get_profile_image, size: "100x100" %></div>
         <div>ユーザーネーム:<%= @event.user.name %></div>
