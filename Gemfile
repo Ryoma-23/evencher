@@ -57,3 +57,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # deviseを導入
 gem 'devise'
+
+# kaminariを導入
+gem 'kaminari','~> 1.2.1'

@@ -17,7 +17,7 @@ class Public::EventsController < ApplicationController
   end
 
   def index
-    @event = Event.all
+    @event = Event.page(params[:page])
     @tag_list = Tag.all
   end
 

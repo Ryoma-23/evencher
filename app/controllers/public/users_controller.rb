@@ -1,7 +1,7 @@
 class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @event = @user.events
+    @event = @user.events.page(params[:])
   end
 
   def edit
