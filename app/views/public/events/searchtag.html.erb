@@ -1,7 +1,8 @@
 <div class="container">
   <div class="row my-5">
-    <% @events.each do |event| %>
-      <div class="col-md-7 mx-auto">
+    <div class="col-2"></div>
+    <div class="col-7 mx-auto">
+      <% @events.each do |event| %>
         <%= link_to event_path(event.id) do %>
           <div class="card flex-md-row mb-4 shadow-sm h-md-250">
             <%= image_tag event.get_event_image, size: "200x250", class: "card-img-left flex-auto d-none d-lg-block" %>
@@ -19,12 +20,14 @@
             </div>
           </div>
         <% end %>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
+    <div class="col-3 pl-5">
+      <!--タグリスト-->
+      <% @tag_list.each do |list| %>
+        <div><%= link_to list.tagname, tag_events_path(tag_id: list) %>
+        <%= "(#{list.event_tags.count})" %></div>
+      <% end %>
+    </div>
   </div>
-  <!--タグリスト-->
-  <% @tag_list.each do |list| %>
-    <%= link_to list.tagname, tag_events_path(tag_id: list) %>
-    <%= "(#{list.event_tags.count})" %>
-  <% end %>
 </div>
