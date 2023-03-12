@@ -6,13 +6,17 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-  
+
   scope module: :public do
     root to: 'homes#top'
     resources :events, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
       collection do
         get "search"
       end
+    end
+    #タグによって絞り込んだ投稿を表示するアクションへのルーティング
+    resources :tags do
+      get 'events', to: 'events#searchtag'
     end
     resources :users, only: [:show, :edit, :update] do
       get :check, on: :collection

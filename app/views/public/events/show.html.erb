@@ -17,9 +17,7 @@
       
         <div>料金  <%= @event.price %></div>
         
-        <% @event_tags.each do |tag| %>
-          <div><%= tag.tagname %><%= "(#{tag.event_tags.count})" %></div>
-        <% end %>
+        <div class="fas fa-tag text-dark"><%= @event.tags.map(&:tagname).join(', ') %></div>
       
         <div>ユーザー画像<%= image_tag @event.user.get_profile_image, size: "100x100" %></div>
         <div>ユーザーネーム:<%= @event.user.name %></div>

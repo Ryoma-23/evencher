@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row my-5">
-    <% @event.each do |event| %>
+    <% @events.each do |event| %>
       <div class="col-md-7 mx-auto">
         <%= link_to event_path(event.id) do %>
           <div class="card flex-md-row mb-4 shadow-sm h-md-250">
@@ -24,7 +24,7 @@
   </div>
   <!--タグリスト-->
   <% @tag_list.each do |list| %>
-    <%= link_to list.tagname, tag_events_path(tag_id: @event.ids) %>
+    <%= link_to list.tagname, tag_events_path(tag_id: list) %>
     <%= "(#{list.event_tags.count})" %>
   <% end %>
 </div>
