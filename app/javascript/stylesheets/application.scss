@@ -1,2 +1,7 @@
 // Bootstralの導入
 @import '~bootstrap/scss/bootstrap';
+
+.button_border_none {
+  border: none;
+  background: transparent;
+}

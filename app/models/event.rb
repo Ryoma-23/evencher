@@ -4,8 +4,12 @@ class Event < ApplicationRecord
 
   #タグのリレーション
   has_many :event_tags, dependent: :destroy
-  has_many :tags, through: :event_tags
+  has_many :tags, through: :event_tags, dependent: :destroy
+  
+  #ブックマークのリレーション
+  has_many :bookmarks, dependent: :destroy
 
+  # イベント画像
   def get_event_image
     unless event_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
@@ -14,6 +18,7 @@ class Event < ApplicationRecord
     event_image
   end
 
+  # 検索機能
   def self.search(search)
     if search != ""
       Event.where(['name LIKE(?) OR place LIKE(?)', "%#{search}%", "%#{search}%"])
@@ -22,6 +27,7 @@ class Event < ApplicationRecord
     end
   end
 
+  # タグ機能
   def save_tag(sent_tags)
     # タグが存在していれば、タグの名前を配列として全て取得
     current_tags = self.tags.pluck(:tagname) unless self.tags.nil?
@@ -40,5 +46,10 @@ class Event < ApplicationRecord
       new_post_tag = Tag.find_or_create_by(tagname: new)
       self.tags << new_post_tag
     end
+  end
+  
+  # ブックマーク機能
+  def bookmarked_by?(user)
+    bookmarks.where(user_id: user).exists?
   end
 end

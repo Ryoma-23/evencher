@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     resources :events, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
+      resource :bookmarks, only: [:create, :destroy]
       collection do
         get "search"
       end
@@ -18,9 +19,10 @@ Rails.application.routes.draw do
     resources :tags do
       get 'events', to: 'events#searchtag'
     end
-    resources :users, only: [:show, :edit, :update] do
+    resources :users, only: [:show, :edit, :update, :mybookmark] do
       get :check, on: :collection
       patch :withdrawal, on: :collection
+      get :bookmark, on: :collection #ブックマーク
     end
   end
 

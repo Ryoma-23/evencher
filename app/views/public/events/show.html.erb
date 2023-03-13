@@ -4,24 +4,29 @@
       <h4>イベント詳細</h4>
       <div>
         <div><%= image_tag @event.get_event_image, size: "150x150" %></div>
-      
+
         <div>イベント名  <%= @event.name %></div>
-      
+
         <div>イベント説明  <%= @event.introduction %></div>
-      
+
         <div>イベント開催日  <%= l @event.season_start %>〜<%= l @event.season_end %></div>
-      
+
         <div>時間  <%= l @event.time_start, format: :time %>〜<%= l @event.time_end, format: :time %></div>
-      
+
         <div>場所  <%= @event.place %></div>
-      
+
         <div>料金  <%= @event.price %></div>
-        
+
         <div class="fas fa-tag text-dark"><%= @event.tags.map(&:tagname).join(', ') %></div>
-      
+
         <div>ユーザー画像<%= image_tag @event.user.get_profile_image, size: "100x100" %></div>
         <div>ユーザーネーム:<%= @event.user.name %></div>
         <div>投稿日:<%= l @event.created_at %></div>
+
+        <div id="bookmark_button_<%= @event.id %>">
+          <%= render "public/bookmarks/bookmark", event: @event %>
+        </div>
+
         <% if @event.user == current_user %>
           <%= link_to "削除", event_path(@event), method: :delete, "data-confirm" => "本当に削除しますか？" %>
           |

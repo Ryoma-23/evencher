@@ -5,9 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :events, dependent: :destroy
-  
   has_one_attached :profile_image
-  
+
+  has_many :bookmarks, dependent: :destroy
+  has_many :bookmark_events, through: :bookmarks, source: :event
+
+  #ユーザーアイコン
   def get_profile_image
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/icon_no_image.jpg')
@@ -16,14 +19,15 @@ class User < ApplicationRecord
     profile_image
   end
 
-  def self.guest #ゲストログイン
+  #ゲストログイン
+  def self.guest
     find_or_create_by!(email: 'guest@guest.com') do |user|
       user.password = SecureRandom.urlsafe_base64
       # end_user.confirmed_at = Time.now
       user.name = "ゲスト"
     end
   end
-  
+
   # is_deletedがfalseならtrueを返すようにしている
   def active_for_authentication?
     super && (is_deleted == false)
