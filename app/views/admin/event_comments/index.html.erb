@@ -1,0 +1,9 @@
+<div>
+  <% @event_comments.each do |event_comment| %>
+    <%= event_comment.user.name %>
+    |
+    <%= event_comment.event.name %>
+    |
+    <%= event_comment.comment %><br/>
+  <% end %>
+</div>

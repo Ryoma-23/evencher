@@ -1,0 +1,14 @@
+<% if event.event_comments.present? %>
+  <% event.event_comments.each do |event_comment| %>
+    <p><%= image_tag event_comment.user.get_profile_image, size: "100x100" %></p>
+    <%= event_comment.user.name %>
+    <%= l event_comment.created_at %><%= event_comment.comment %>
+    <% if event_comment.user == current_user %>
+      <%= link_to event_event_comment_path(event_comment.event.id, event_comment.id), method: :delete, remote: true do %>
+        <i class="fas fa-trash-alt"></i>
+      <% end %>
+    <% end %>
+  <% end %>
+<% else %>
+  <p>感想はまだありません</p>
+<% end %>
