@@ -16,7 +16,7 @@
 
               <div class="card-text text-dark mb-auto"><%= event.introduction %></div> <!--イベント説明-->
 
-              <div class="fas fa-tag text-dark"><%= event.tags.map(&:tagname).join(', ') %></div>
+              <div class="text-dark"><i class="fas fa-tag"></i> <%= event.tags.map(&:tagname).join(', ') %></div>
             </div>
           </div>
         <% end %>
