@@ -9,6 +9,8 @@ class User < ApplicationRecord
 
   has_many :bookmarks, dependent: :destroy
   has_many :bookmark_events, through: :bookmarks, source: :event
+  
+  has_many :event_comments, dependent: :destroy
 
   #ユーザーアイコン
   def get_profile_image

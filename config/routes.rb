@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     resources :events, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
       resource :bookmarks, only: [:create, :destroy]
+      resources :event_comments, only: [:create, :destroy]
       collection do
         get "search"
       end

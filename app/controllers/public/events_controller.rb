@@ -24,6 +24,7 @@ class Public::EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @event_tags = @event.tags
+    @event_comment = EventComment.new
   end
 
   def edit
@@ -51,7 +52,7 @@ class Public::EventsController < ApplicationController
   def search
     @events = Event.search(params[:keyword])
   end
-  
+
   def searchtag
     @tag_list = Tag.all #こっちの投稿一覧表示ページでも全てのタグを表示するために、タグを全取得
     @tag = Tag.find(params[:tag_id]) #クリックしたタグを取得

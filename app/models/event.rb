@@ -8,6 +8,9 @@ class Event < ApplicationRecord
   
   #ブックマークのリレーション
   has_many :bookmarks, dependent: :destroy
+  
+  #コメントのリレーション
+  has_many :event_comments, dependent: :destroy
 
   # イベント画像
   def get_event_image
