@@ -3,8 +3,8 @@ class Public::GroupsController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update]
 
   def index
-    @event = Event.find(params[:event_id])
-    @groups = @event.groups.all
+    @event = Event.find(params[:event_id]) #イベントのidを探す
+    @groups = @event.groups.all #イベントに紐付いたグループを探す
   end
 
   def show
@@ -18,7 +18,7 @@ class Public::GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
-    @event = Event.find(params[:event_id])
+    @event = Event.find(params[:event_id]) #イベントを探す
     @group.owner_id = current_user.id
     @group.event_id = @event.id #イベントに紐付け
     if @group.save
