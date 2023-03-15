@@ -17,7 +17,7 @@ class User < ApplicationRecord
   
   #グループのリレーション
   has_many :group_users, dependent: :destroy
-  has_many :groups, through: :group_users, source: :event
+  has_many :groups, through: :group_users
 
   #ユーザーアイコン
   def get_profile_image

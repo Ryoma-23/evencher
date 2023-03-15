@@ -9,9 +9,9 @@
     <tbody>
       <% @groups.each do |group| %>
       <tr>
-        <td><%= link_to group.name, event_group_path(group) %></td>
+        <td><%= link_to group.name, event_group_path(group.event, group) %></td>
       </tr>
-      <% end
+      <% end%>
     </tbody>
   </table>
 </div>

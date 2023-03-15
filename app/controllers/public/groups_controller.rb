@@ -3,7 +3,8 @@ class Public::GroupsController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update]
 
   def index
-    @groups = Group.all
+    @event = Event.find(params[:event_id])
+    @groups = @event.groups.all
   end
 
   def show
@@ -11,15 +12,17 @@ class Public::GroupsController < ApplicationController
   end
 
   def new
+    @event = Event.find(params[:event_id])
     @group = Group.new
   end
 
   def create
     @group = Group.new(group_params)
-    @group.ownew_id = current_user.id
-    # @group.event_id = event.id #イベントに紐付け
+    @event = Event.find(params[:event_id])
+    @group.owner_id = current_user.id
+    @group.event_id = @event.id #イベントに紐付け
     if @group.save
-      redirect_to event_groups_path
+      redirect_to event_groups_path(@event)
     else
       render 'new'
     end
@@ -42,6 +45,7 @@ class Public::GroupsController < ApplicationController
     params.require(:group).permit(:name)
   end
 
+  #グループのオーナーか判断して制限
   def ensure_correct_user
     @group = Group.find(params[:id])
     unless @group.owner_id == current_user.id

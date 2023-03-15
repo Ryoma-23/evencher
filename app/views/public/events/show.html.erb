@@ -46,4 +46,4 @@
   <%= render 'public/event_comments/event_comments', event: @event %>
 </div>
 
-<!--<div><= link_to "グループを作成する", new_event_group_path %> | <= link_to "グループ一覧",event_groups_path %></div>-->
+<div><%= link_to "グループを作成する", new_event_group_path(@event) %> | <%= link_to "グループ一覧",event_groups_path(@event) %></div>
