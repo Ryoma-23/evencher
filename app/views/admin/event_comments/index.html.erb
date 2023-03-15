@@ -4,6 +4,9 @@
     |
     <%= event_comment.event.name %>
     |
-    <%= event_comment.comment %><br/>
+    <%= event_comment.comment %>
+    <%= link_to "削除", admin_event_comment_path(event_comment.id), method: :delete do %>
+      <i class="fas fa-trash-alt"></i><br/>
+    <% end %>
   <% end %>
 </div>

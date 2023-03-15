@@ -1,0 +1,28 @@
+/*button_linkの変更*/
+.button_border_none {
+  border: none;
+  background: transparent;
+}
+
+/*ページネーションデザイン修正*/
+.pagination>li>a {
+  border: none;
+}
+
+.pagination>.active>a {
+    background-color: #d05c62 !important;
+    border-color: #d05c62 !important;
+  }
+
+.page-link:hover {
+    color: #a84b4f !important;
+}
+
+.page-item.active .page-link {
+    color: #fff !important;
+}
+
+.page-item .page-link {
+    border-radius: 0.4rem;
+    color: #696969 !important;
+}
