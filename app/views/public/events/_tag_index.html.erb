@@ -1,4 +1,4 @@
 <% tag_list.each do |list| %>
-  <div><%= link_to list.tagname, tag_events_path(tag_id: events.ids) %>
+  <div><%= link_to list.tagname, tag_events_path(tag_id: list.id) %>
   <%= "(#{list.event_tags.count})" %></div>
 <% end %>

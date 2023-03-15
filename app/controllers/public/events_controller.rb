@@ -1,6 +1,6 @@
 class Public::EventsController < ApplicationController
   before_action :authenticate_user!, except: [:top]
-  
+
   def new
     @event = Event.new
   end
