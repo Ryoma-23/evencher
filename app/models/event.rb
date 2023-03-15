@@ -11,6 +11,16 @@ class Event < ApplicationRecord
   
   #コメントのリレーション
   has_many :event_comments, dependent: :destroy
+  
+  #グループのリレーション
+  has_many :groups, dependent: :destroy
+  
+  #バリデーション
+  validates :name, presence: true
+  validates :introduction, presence: true
+  validates :season_start, presence: true
+  validates :time_start, presence: true
+  validates :place, presence: true
 
   # イベント画像
   def get_event_image

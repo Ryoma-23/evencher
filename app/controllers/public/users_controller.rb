@@ -1,4 +1,6 @@
 class Public::UsersController < ApplicationController
+  before_action :authenticate_user!, except: [:top]
+  
   def show
     @user = User.find(params[:id])
     @event = @user.events.page(params[:page])

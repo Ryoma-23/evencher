@@ -1,5 +1,5 @@
 class Public::BookmarksController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:top]
   
   def create
     @event = Event.find(params[:event_id])

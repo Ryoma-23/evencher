@@ -4,13 +4,20 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :events, dependent: :destroy
   has_one_attached :profile_image
-
+  #イベントのリレーション
+  has_many :events, dependent: :destroy
+  
+  #ブックマークのリレーション
   has_many :bookmarks, dependent: :destroy
   has_many :bookmark_events, through: :bookmarks, source: :event
   
+  #コメントのリレーション
   has_many :event_comments, dependent: :destroy
+  
+  #グループのリレーション
+  has_many :group_users, dependent: :destroy
+  has_many :groups, through: :group_users, source: :event
 
   #ユーザーアイコン
   def get_profile_image

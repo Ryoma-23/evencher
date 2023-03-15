@@ -1,4 +1,6 @@
 class Public::EventsController < ApplicationController
+  before_action :authenticate_user!, except: [:top]
+  
   def new
     @event = Event.new
   end
@@ -17,7 +19,7 @@ class Public::EventsController < ApplicationController
   end
 
   def index
-    @event = Event.page(params[:page])
+    @events = Event.page(params[:page])
     @tag_list = Tag.all
   end
 
@@ -51,12 +53,13 @@ class Public::EventsController < ApplicationController
 
   def search
     @events = Event.search(params[:keyword])
+    @tag_list = Tag.all
   end
 
   def searchtag
     @tag_list = Tag.all #こっちの投稿一覧表示ページでも全てのタグを表示するために、タグを全取得
     @tag = Tag.find(params[:tag_id]) #クリックしたタグを取得
-    @events = @tag.events #クリックしたタグに紐付けられた投稿を全て表示
+    @events = @tag.events.all #クリックしたタグに紐付けられた投稿を全て表示
   end
 
   private
