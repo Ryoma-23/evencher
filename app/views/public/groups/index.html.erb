@@ -10,6 +10,7 @@
       <% @groups.each do |group| %>
       <tr>
         <td><%= link_to group.name, event_group_path(group.event, group) %></td>
+        <td><%= group.users.count %></td>
       </tr>
       <% end%>
     </tbody>

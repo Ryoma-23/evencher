@@ -15,7 +15,10 @@ Rails.application.routes.draw do
     resources :events, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
       resource :bookmarks, only: [:create, :destroy]
       resources :event_comments, only: [:create, :destroy]
-      resources :groups
+      resources :groups do
+        get "join" => "groups#join"
+        delete "all_destroy" => "groups#all_destroy"
+      end
       collection do
         get "search"
       end
