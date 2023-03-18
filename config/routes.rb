@@ -19,7 +19,7 @@ Rails.application.routes.draw do
       resources :groups do                                                               #グループ
         get "join" => "groups#join"
         delete "withdrawal" => "groups#withdrawal"
-        resources :chats, only: [:create, :destroy]                                       #グループチャット
+        resources :chats, only: [:create, :destroy]                                      #グループチャット
       end
       collection do                                                                      #検索
         get "search"
