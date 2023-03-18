@@ -17,7 +17,7 @@ Rails.application.routes.draw do
       resources :event_comments, only: [:create, :destroy]
       resources :groups do
         get "join" => "groups#join"
-        delete "all_destroy" => "groups#all_destroy"
+        delete "withdrawal" => "groups#withdrawal"
       end
       collection do
         get "search"

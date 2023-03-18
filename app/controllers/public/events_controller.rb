@@ -27,6 +27,8 @@ class Public::EventsController < ApplicationController
     @event = Event.find(params[:id])
     @event_tags = @event.tags
     @event_comment = EventComment.new
+    # グループ一覧表示
+    @groups = @event.groups.all #イベントに紐付いたグループを探す
   end
 
   def edit

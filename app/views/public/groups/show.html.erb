@@ -19,15 +19,8 @@
               <% end %>
             </td>
             <td>
-              <% if @group.users.include?(current_user) %>
-                <%= link_to '退会', event_group_path(@group.event, @group), method: :delete, class: "btn btn-sm btn-danger" %>
-              <% else %>
-                <%= link_to '参加', event_group_join_path(@group.event, @group), class: "btn btn-sm btn-success" %>
-              <% end %>
-            </td>
-            <td>
               <% if @group.owner_id == current_user.id %>
-                <%= link_to "グループ削除", event_group_all_destroy_path(@group.event, @group), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-sm btn-outline-danger" %>
+                <%= link_to "グループ削除", event_group_path(@group.event, @group), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-sm btn-outline-danger" %>
               <% end %>
             </td>
           </tr>

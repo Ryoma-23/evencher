@@ -1,6 +1,7 @@
 <div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-md-10 col-sm-12 mx-6 mx-sm-auto px-auto my-5">
+  <div class="row my-5">
+    <div class="col-2"></div>
+    <div class="col-7 mx-auto">
       <h4>イベント詳細</h4>
       <div>
         <div><%= image_tag @event.get_event_image, size: "150x150" %></div>
@@ -32,18 +33,21 @@
           |
           <%= link_to "編集", edit_event_path(@event.id) %>
         <% end %>
-      </div>
 
+        </div>
+        <!--コメントフォーム-->
+        <div class="new-comment">
+          <%= render 'public/event_comments/form', event: @event, event_comment: @event_comment %>
+        </div>
+        <!--コメント一覧-->
+        <div id="comments_area">
+          <%= render 'public/event_comments/event_comments', event: @event %>
+        </div>
+      </div>
+      <div class="col-3">
+        <div><%= link_to "グループを作成する", new_event_group_path(@event) %></div>
+        <%= render "public/groups/index", groups: @groups, group: @group %>
+      </div>
     </div>
   </div>
 </div>
-<!--コメントフォーム-->
-<div class="new-comment">
-  <%= render 'public/event_comments/form', event: @event, event_comment: @event_comment %>
-</div>
-<!--コメント一覧-->
-<div id="comments_area">
-  <%= render 'public/event_comments/event_comments', event: @event %>
-</div>
-
-<div><%= link_to "グループを作成する", new_event_group_path(@event) %> | <%= link_to "グループ一覧",event_groups_path(@event) %></div>
