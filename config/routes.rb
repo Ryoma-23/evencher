@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'event_comments/index'
-  end
+  # namespace :admin do
+  #   get 'event_comments/index'
+  # end
+  
   # 顧客用
   # URL /end_users/sign_in ...
   devise_for :users,skip: [:passwords], controllers: {
@@ -12,14 +13,15 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: 'homes#top'
-    resources :events, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
-      resource :bookmarks, only: [:create, :destroy]
-      resources :event_comments, only: [:create, :destroy]
-      resources :groups do
+    resources :events, only: [:new, :create, :index, :show, :edit, :update, :destroy] do #イベント
+      resource :bookmarks, only: [:create, :destroy]                                     #ブックマーク
+      resources :event_comments, only: [:create, :destroy]                               #コメント
+      resources :groups do                                                               #グループ
         get "join" => "groups#join"
         delete "withdrawal" => "groups#withdrawal"
+        resources :chats, only: [:create, :destroy]                                       #グループチャット
       end
-      collection do
+      collection do                                                                      #検索
         get "search"
       end
     end
@@ -27,7 +29,7 @@ Rails.application.routes.draw do
     resources :tags do
       get 'events', to: 'events#searchtag'
     end
-    resources :users, only: [:show, :edit, :update, :mybookmark] do
+    resources :users, only: [:show, :edit, :update, :mybookmark] do                      #ユーザー情報
       get :check, on: :collection
       patch :withdrawal, on: :collection
       get :bookmark, on: :collection #ブックマーク

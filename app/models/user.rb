@@ -19,6 +19,9 @@ class User < ApplicationRecord
   has_many :group_users, dependent: :destroy
   has_many :groups, through: :group_users, dependent: :destroy
 
+  #チャットのリレーション
+  has_many :chats ,dependent: :destroy
+
   #ユーザーアイコン
   def get_profile_image
     unless profile_image.attached?

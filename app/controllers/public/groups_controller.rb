@@ -3,6 +3,9 @@ class Public::GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    # チャットの表示
+    @chats = @group.chats
+    @chat = Chat.new(group_id: @group.id)
   end
 
   def new
