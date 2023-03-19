@@ -6,3 +6,18 @@ ja:
   date:
     formats:
       default: "%Y/%m/%d"
+  activerecord:
+    attributes:
+      user:
+        name: 名前
+        profile_image: プロフィール画像
+      event:
+        name: イベント名
+        introduction: イベント詳細
+        season_start: イベント開催日
+        season_end: イベント終了日
+        time_start: イベント開催時刻
+        time_end: イベント終了時刻
+        place: 場所
+        price: 料金
+        event_image: イベント画像

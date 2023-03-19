@@ -3,16 +3,8 @@
     <div class="col-lg-8 col-md-10 col-sm-12 mx-6 mx-sm-auto px-auto my-5">
       <h3 class="mb-5 border-bottom text-center"><span>イベント情報新規投稿</span></h3>
       
-      <% if @event.errors.any? %>
-        <%= @event.errors.count %>件のエラーが発生しました
-        <ul>
-          <% @event.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      <% end %>
-      
       <%= form_with model: @event, url: events_path, method: :post, local:true do |f| %>
+        <%= render 'layouts/error_messages', model: f.object %> <!--エラーメッセージ-->
         <div class="mx-auto">
           <dl class="row">
             <dt class="col-3 mb-3"><%= f.label :event_image, "イベント画像", class: "text-right" %></dt>

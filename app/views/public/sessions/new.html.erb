@@ -3,7 +3,12 @@
     <div class="col-lg-8 col-md-10 col-sm-12 mx-6 mx-sm-auto px-auto my-5">
       <h2 class="mb-5 border-bottom text-center"><span>イベンチャーにログイン</span></h2>
       
-      <%= form_with model: @user, url: user_session_path do |f| %>
+      <div class="login-flash-message">
+        <%= flash[:notice] %>
+        <%= flash[:alert] %>
+      </div>
+      
+      <%= form_with model: @user, url: user_session_path, id: "new_user", class: "new_user", local: true do |f| %>
         <div class="field">
           <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class:"form-control form-control-lg mb-3" %>
         </div>
