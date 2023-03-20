@@ -2,7 +2,9 @@
   <div class="row">
     <div class="col-lg-8 col-md-10 col-sm-12 mx-6 mx-sm-auto px-auto my-5">
       <h3 class="mb-5 border-bottom text-center"><span>プロフィール編集</span></h3>
+      
       <%= form_with model: @user, url: user_path(@user.id), method: :patch do |f| %>
+        <%= render 'layouts/error_messages', model: f.object %> <!--エラーメッセージ-->
         <div class="mx-auto">
           <dl class="row">
             <dt class="col-3 mb-3"><%= f.label :profile_image, "プロフィール画像", class: "text-right" %></dt>

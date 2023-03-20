@@ -19,7 +19,7 @@ class Public::EventsController < ApplicationController
   end
 
   def index
-    @events = Event.page(params[:page])
+    @events = Event.page(params[:page]).order(created_at: :desc)
     @tag_list = Tag.all
   end
 
@@ -54,14 +54,15 @@ class Public::EventsController < ApplicationController
   end
 
   def search
-    @events = Event.search(params[:keyword])
+    @events = Event.search(params[:keyword]).page(params[:page]).order(created_at: :desc)
     @tag_list = Tag.all
   end
 
   def searchtag
     @tag_list = Tag.all #こっちの投稿一覧表示ページでも全てのタグを表示するために、タグを全取得
     @tag = Tag.find(params[:tag_id]) #クリックしたタグを取得
-    @events = @tag.events.all #クリックしたタグに紐付けられた投稿を全て表示
+    @events = @tag.events.page(params[:page]).order(created_at: :desc) #クリックしたタグに紐付けられた投稿を全て表示
+    @tag_list = Tag.all
   end
 
   private

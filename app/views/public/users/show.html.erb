@@ -1,36 +1,23 @@
-<div>
-  <%= image_tag @user.get_profile_image, size: "100x100" %>
-  <h3><%= @user.name %></h3>
-  <%= @user.email %>
-  <% if @user == current_user %>
-    <%= link_to "プロフィール編集", edit_user_path %>
-    |
-    <%= link_to "ブックマーク一覧", bookmark_users_path %>
-  <% end %>
-
-</div>
-
 <div class="container">
   <div class="row my-5">
-    <div class="col-md-7 mx-auto">
-      <% @event.each do |event| %>
-        <%= link_to event_path(event.id) do %>
-          <div class="card flex-md-row mb-4 shadow-sm h-md-250">
-            <%= image_tag event.get_event_image, size: "200x250", class: "card-img-left flex-auto d-none d-lg-block" %>
-            <div class="card-body d-flex flex-column align-items-start">
-
-              <h4 class="mb-0 text-dark"><%= event.name %></h4> <!--イベント名-->
-
-              <div class="mb-1 text-muted"><span>期間：</span><%= l event.season_start %>〜<%= l event.season_end %></div> <!--イベント期間-->
-
-              <div class="mb-1 text-muted"><span>場所：</span><%= event.place %></div> <!--イベント場所-->
-
-              <div class="card-text text-dark mb-auto"><%= event.introduction %></div> <!--イベント説明-->
-            </div>
-          </div>
-        <% end %>
+    <div class="col-3">
+      <%= image_tag @user.get_profile_image, size: "100x100", class: "rounded-circle" %>
+      <h3><%= @user.name %></h3>
+      <div><%= @user.email %></div>
+      <% if @user == current_user %>
+        <div><%= link_to "プロフィール編集", edit_user_path %></div>
+        |
+        <div><%= link_to "ブックマーク一覧", bookmark_users_path %></div>
       <% end %>
-      <!--<= paginate @events %>-->
+    </div>
+    <div class="col-6 mx-auto">
+      <%= render "public/events/index", events: @events %>
+      <div class="row justify-content-center mt-5">
+        <%= paginate @events %>
+      </div>
+    </div>
+    <div class="col-3 pl-5">
+
     </div>
   </div>
 </div>

@@ -5,22 +5,26 @@ class Event < ApplicationRecord
   #タグのリレーション
   has_many :event_tags, dependent: :destroy
   has_many :tags, through: :event_tags, dependent: :destroy
-  
+
   #ブックマークのリレーション
   has_many :bookmarks, dependent: :destroy
-  
+
   #コメントのリレーション
   has_many :event_comments, dependent: :destroy
-  
+
   #グループのリレーション
   has_many :groups, dependent: :destroy
-  
+
   #バリデーション
   validates :name, presence: true
   validates :introduction, presence: true
   validates :season_start, presence: true
+  validates :season_end, presence: true
   validates :time_start, presence: true
+  validates :time_end, presence: true
   validates :place, presence: true
+
+  validate :start_end_check
 
   # イベント画像
   def get_event_image
@@ -29,6 +33,12 @@ class Event < ApplicationRecord
       event_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     event_image
+  end
+
+  #開始日と終了日の逆転防止
+  def start_end_check
+    errors.add(:season_end, "は開始日より前の日付は登録できません。") unless
+    self.season_start <= self.season_end
   end
 
   # 検索機能
@@ -60,7 +70,7 @@ class Event < ApplicationRecord
       self.tags << new_post_tag
     end
   end
-  
+
   # ブックマーク機能
   def bookmarked_by?(user)
     bookmarks.where(user_id: user).exists?

@@ -1,13 +1,16 @@
 <div class="container">
   <div class="row my-5">
-    <div class="col-2"><h2>検索結果</h2></div>
-    <div class="col-7 mx-auto">
+    <div class="col-3"><h4>タグ検索結果</h4></div>
+    <div class="col-6 mx-auto">
       <%= render "public/events/index", events: @events %>
-      <!--<div class="row justify-content-center mt-5">-->
-      <!--  <= paginate @events %>-->
-      <!--</div>-->
+      <div class="row justify-content-center mt-5">
+        <%= paginate @events %>
+      </div>
     </div>
     <div class="col-3 pl-5">
+      <%= render 'layouts/search' %>
+      <!--タグリスト-->
+      <%= render "public/events/tag_index", tag_list: @tag_list, events: @events %>
     </div>
   </div>
 </div>

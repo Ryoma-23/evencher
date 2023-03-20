@@ -1,12 +1,19 @@
 <% events.each do |event| %>
   <%= link_to event_path(event.id) do %>
     <div class="card flex-md-row mb-4 shadow-sm h-md-250">
-      <%= image_tag event.get_event_image, size: "200x250", class: "card-img-left flex-auto d-none d-lg-block" %>
+      <%= image_tag event.get_event_image, size: "220x220", class: "card-img-left flex-auto d-none d-lg-block" %>
       <div class="card-body d-flex flex-column align-items-start">
 
         <h4 class="mb-0 text-dark"><%= event.name %></h4> <!--イベント名-->
 
-        <div class="mb-1 text-muted"><span>期間：</span><%= l event.season_start %>〜<%= l event.season_end %></div> <!--イベント期間-->
+        <div class="mb-1 text-muted"> <!--イベント期間-->
+          <span>期間：</span>
+          <% if event.season_start == event.season_end %>
+            <%= l event.season_start %>
+          <% else %>
+            <%= l event.season_start %>〜<%= l event.season_end %>
+          <% end %>
+        </div>
 
         <div class="mb-1 text-muted"><span>場所：</span><%= event.place %></div> <!--イベント場所-->
 

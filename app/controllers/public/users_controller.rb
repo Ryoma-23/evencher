@@ -1,9 +1,9 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!, except: [:top]
-  
+
   def show
     @user = User.find(params[:id])
-    @event = @user.events.page(params[:page])
+    @events = @user.events.page(params[:page]).order(created_at: :desc)
   end
 
   def edit
@@ -12,8 +12,11 @@ class Public::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to user_path(@user.id)
+    if @user.update(user_params)
+      redirect_to user_path(@user.id)
+    else
+      render :edit
+    end
   end
 
   def withdrawal
@@ -26,7 +29,7 @@ class Public::UsersController < ApplicationController
   end
 
   def bookmark
-    @events = current_user.bookmark_events.includes(:user)
+    @events = current_user.bookmark_events.includes(:user).page(params[:page]).order(created_at: :desc)
   end
 
   private
