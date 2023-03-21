@@ -1,7 +1,30 @@
-<div class='container px-5 px-sm-0'>
-  <div class='row'>
-    <div class='col-md-8 offset-md-1'>
-      <h2>グループ詳細</h2>
+<div class='container'>
+  <div class='row my-5'>
+    <div class='col-lg-7'>
+      <h2>グループチャット</h2>
+      <!--投稿フォーム-->
+      <div>
+        <%= form_with model: @chat, url: event_group_chats_path(@group.event, @group.id), local:true do |f| %>
+          <div class="d-flex mb-3">
+            <%= f.text_field :message, placeholder: "チャットする...", class: "form-control" %>
+            <%= f.hidden_field :group_id %>
+            <%= f.submit "chat", class: "btn btn-outline-success w-25" %>
+          </div>
+        <% end %>
+        <% @chats.each do |chat| %>
+          <div class="d-flex mb-3">
+            <div>
+              <%= image_tag chat.user.get_profile_image, size: "50x50", class: "rounded-circle mr-2" %>
+            </div>
+            <div class="d-flex flex-column">
+              <div><%= chat.user.name %></div>
+              <div><%= chat.message %></div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-5">
       <table class='table table-hover table-inverse'>
         <thead>
           <tr>
@@ -19,37 +42,16 @@
               <% end %>
             </td>
             <td>
-              <% if @group.owner_id == current_user.id %>
-                <%= link_to "グループ削除", event_group_path(@group.event, @group), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-sm btn-outline-danger" %>
-              <% end %>
+              <div><%= link_to '退会する', event_group_withdrawal_path(@group.event, @group), method: :delete, class: "btn btn-sm btn-outline-danger" %></div>
+              <div>
+                <% if @group.owner_id == current_user.id %>
+                  <%= link_to "グループ削除", event_group_path(@group.event, @group), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-sm btn-outline-danger" %>
+                <% end %>
+              </div>
             </td>
           </tr>
         </tbody>
       </table>
-      <!--投稿フォーム-->
-      <div>
-        <%= form_with model: @chat, url: event_group_chats_path(@group.event, @group.id), local:true do |f| %>
-          <%= f.text_field :message %>
-          <%= f.hidden_field :group_id %>
-          <%= f.submit "chat"%>
-        <% end %>
-        <table>
-          <thead>
-            <tr>
-              <td>投稿者名</td>
-              <td>投稿内容</td>
-            </tr>
-          </thead>
-          <tbody>
-            <% @chats.each do |chat| %>
-              <tr>
-                <td><%= chat.user.name %></td>
-                <td><%= chat.message %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
     </div>
   </div>
 </div>

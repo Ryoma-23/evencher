@@ -8,14 +8,12 @@
   <tbody>
     <% groups.each do |group| %>
     <tr>
-      <td><%= group.name %></td>
-      <td>(<%= group.users.count %>)</td>
+      <td><%= group.name %> (<%= group.users.count %>)</td>
       <td>
         <% if group.users.include?(current_user) %>
-          <%= link_to '退会', event_group_withdrawal_path(group.event, group), method: :delete, class: "btn btn-sm btn-danger" %>
-          <%= link_to "chatを始める", event_group_path(group.event, group) %>
+          <%= link_to "chatを始める", event_group_path(group.event, group), class: "btn btn-sm btn-info rounded-pill" %>
         <% else %>
-          <%= link_to '参加', event_group_join_path(group.event, group), class: "btn btn-sm btn-success" %>
+          <%= link_to '参加する', event_group_join_path(group.event, group), class: "btn btn-sm btn-success rounded-pill" %>
         <% end %>
       </td>
     </tr>

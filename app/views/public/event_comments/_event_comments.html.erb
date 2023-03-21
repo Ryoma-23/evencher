@@ -10,7 +10,7 @@
           <div class="text-muted mr-1"><%= l event_comment.created_at %></div>
           <div class="mr-1">
             <% if event_comment.user == current_user %>
-              <%= link_to event_event_comment_path(event_comment.event.id, event_comment.id), method: :delete, remote: true do %>
+              <%= link_to event_event_comment_path(event_comment.event.id, event_comment.id), method: :delete, remote: true, class: "text-reset" do %>
                 <i class="fas fa-trash-alt"></i>
               <% end %>
             <% end %>
