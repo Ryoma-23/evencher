@@ -1,12 +1,33 @@
-<div>
-  <% @event_comments.each do |event_comment| %>
-    <%= event_comment.user.name %>
-    |
-    <%= event_comment.event.name %>
-    |
-    <%= event_comment.comment %>
-    <%= link_to admin_event_comment_path(event_comment.id), method: :delete do %>
-      <i class="fas fa-trash-alt"></i><br/>
-    <% end %>
-  <% end %>
+<div class="container my-5">
+  <div class="row">
+    <h4 class="mb-4 ml-5">コメント一覧</h4>
+  </div>
+  <div class="row px-5">
+    <table class="table table-hover table-inverse">
+      <thead>
+        <tr>
+          <th>ユーザー名</th>
+          <th>イベント名</th>
+          <th>コメント</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @event_comments.each do |event_comment| %>
+          <tr>
+            <td><%= event_comment.user.name %></td>
+            <td><%= event_comment.event.name %></td>
+            <td>
+              <%= event_comment.comment %>
+              <%= link_to admin_event_comment_path(event_comment.id), method: :delete, class: "text-reset text-break" do %>
+                <i class="fas fa-trash-alt"></i>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="row justify-content-center mt-5">
+    <%= paginate @event_comments %>
+  </div>
 </div>

@@ -1,14 +1,21 @@
 <div class="container">
   <h3 class="my-5 border-bottom text-center"><span>イベント一覧</span></h3>
   <div class="row my-5">
-    <div class="col-2"></div>
+    <div class="col-2">
+      <div class="login-flash-message">
+        <%= flash[:notice] %>
+        <%= flash[:alert] %>
+      </div>
+    </div>
     <div class="col-6 mx-auto">
+      <!--投稿一覧-->
       <%= render "public/events/index", events: @events %>
       <div class="row justify-content-center mt-5">
         <%= paginate @events %>
       </div>
     </div>
     <div class="col-3">
+      <!--検索欄-->
       <div class="search_form">
         <h5 class="mb-2 border-bottom text-center"><span>イベント検索</span></h5>
         <%= render 'layouts/search' %>

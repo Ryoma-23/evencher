@@ -1,5 +1,10 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
-
-<%= link_to "コメント管理", admin_event_comments_path %><br/>
-<%= link_to "ユーザー管理", admin_users_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 col-sm-12 mx-6 mx-sm-auto px-auto my-5">
+      <h3 class="mb-5 border-bottom text-center"><span>イベンチャー管理</span></h3>
+      <div><%= link_to "ユーザー管理", admin_users_path, class: "btn btn-lg btn-outline-info form-control mb-3" %></div>
+      <div><%= link_to "イベント管理", admin_events_path, class: "btn btn-lg btn-outline-info form-control mb-3" %></div>
+      <div><%= link_to "コメント管理", admin_event_comments_path, class: "btn btn-lg btn-outline-info form-control mb-3" %></div>
+    </div>
+  </div>
+</div>

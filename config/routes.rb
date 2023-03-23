@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # namespace :admin do
   #   get 'event_comments/index'
   # end
-  
+
   # 顧客用
   # URL /end_users/sign_in ...
   devise_for :users,skip: [:passwords], controllers: {
@@ -45,6 +45,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     resources :users, only: [:index, :show, :edit, :update]
     resources :event_comments, only: [:index, :destroy]
+    resources :events, only: [:index, :show, :destroy]
   end
 
   # 管理者用
