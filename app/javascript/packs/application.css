@@ -4,6 +4,10 @@
   background: transparent;
 }
 
+/*.container {*/
+/*  background-color: #e6e6fa !important;*/
+/*}*/
+
 /*ページネーションデザイン修正*/
 .pagination>li>a {
   border: none;

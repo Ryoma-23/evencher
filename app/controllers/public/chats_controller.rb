@@ -3,8 +3,11 @@ class Public::ChatsController < ApplicationController
   def create
     @group = Group.find(params[:group_id]) #グループのidを探す
     @chat = Chat.new(chat_params)
-    @chat.save
-    redirect_to event_group_path(@group.event, @group)
+    if @chat.save
+      redirect_to event_group_path(@group.event, @group)
+    else
+      redirect_to event_group_path(@group.event, @group)
+    end
   end
 
   private

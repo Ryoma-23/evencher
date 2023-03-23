@@ -1,0 +1,7 @@
+<%= form_with model: chat, url: event_group_chats_path(group.event, group.id), local:false, class: "js-form" do |f| %> <!--チャットの新規作成-->
+  <div class="d-flex mb-3">
+    <%= f.text_field :message, placeholder: "チャットする...", class: "form-control" %>
+    <%= f.hidden_field :group_id %>
+    <%= f.submit "chat", class: "btn btn-outline-success w-25" %>
+  </div>
+<% end %>

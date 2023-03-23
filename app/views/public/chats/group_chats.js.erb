@@ -1,0 +1,4 @@
+$("#chats_area").html("<%= j(render 'public/chats/group_chats', chats: @chats) %>");
+
+$('.js-form').reset();
+$('error-alert').empty();

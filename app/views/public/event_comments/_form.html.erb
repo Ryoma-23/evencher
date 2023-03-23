@@ -1,4 +1,4 @@
 <%= form_with model: [event, event_comment], local: false do |f| %>
-  <%= f.text_area :comment, rows: '2', placeholder: "感想をここに", class: "form-control" %>
+  <%= f.text_area :comment, rows: '2', placeholder: "イベントの感想をここに...", class: "form-control" %>
   <div class="text-right"><%= f.submit "送信", class: "btn btn-success rounded-pill" %></div>
 <% end %>

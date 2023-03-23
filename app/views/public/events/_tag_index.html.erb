@@ -1,4 +1,8 @@
-<% tag_list.each do |list| %>
-  <div><%= link_to list.tagname, tag_events_path(tag_id: list.id) %>
-  <%= "(#{list.event_tags.count})" %></div>
-<% end %>
+<div class="d-flex flex-wrap">
+  <% tag_list.each do |list| %>
+  <div class="mr-2 mb-2">
+    <%= link_to list.tagname, tag_events_path(tag_id: list.id), class: "text-reset" %>
+    <%= "(#{list.event_tags.count})" %>
+  </div>
+  <% end %>
+</div>

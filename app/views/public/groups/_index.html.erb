@@ -1,3 +1,4 @@
+<% if groups.present? %>
 <h2>Groups</h2>
 <table class='table table-hover table-inverse'>
   <thead>
@@ -20,3 +21,7 @@
     <% end%>
   </tbody>
 </table>
+<% else %>
+  <p class="mt-3">グループチャットを始めてみましょう！</p>
+  <p>まずはグループを作成しましょう</p>
+<% end %>
