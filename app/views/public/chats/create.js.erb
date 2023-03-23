@@ -1,0 +1,4 @@
+$("#chats_area").prepend("<%= j(render 'public/chats/group_chats', chat: @chat) %>");
+
+$('#chat_message').val("");
+$('error_explanation').empty();

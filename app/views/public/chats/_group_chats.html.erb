@@ -1,19 +1,9 @@
-<% chats.each do |chat| %> <!--チャット履歴の表示-->
-  <% if chat.user_id == current_user.id %>
-  <tbody>
-    <tr>
-      <th>
-        <p style="text-align: right;"><%= chat.message %></p>
-      </th>
-      <th></th>
-    </tr>
-  <% else %>
-    <tr>
-      <th></th>
-      <th>
-        <p style="text-align: left;"><%= chat.message %></p>
-      </th>
-    </tr>
-  </tbody>
-  <% end %>
-<% end %>
+<div class="d-flex mb-3">
+  <div>
+    <%= image_tag chat.user.get_profile_image, size: "50x50", class: "rounded-circle mr-2" %>
+  </div>
+  <div class="d-flex flex-column">
+    <div><%= chat.user.name %></div>
+    <div><%= chat.message %></div>
+  </div>
+</div>
