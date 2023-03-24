@@ -1,12 +1,19 @@
 <div class="container">
+  <h3 class="my-5 border-bottom text-center"><span>ブックマーク</span></h3>
   <div class="row my-5">
-    <div class="col-3"><h4>ブックマーク</h4></div>
+    <div class="col-2">
+      <div class="login-flash-message">
+        <%= flash[:notice] %>
+        <%= flash[:alert] %>
+      </div>
+    </div>
     <div class="col-6 mx-auto">
+      <!--ブックマーク一覧-->
       <%= render "public/events/index", events: @events %>
       <div class="row justify-content-center mt-5">
         <%= paginate @events %>
       </div>
     </div>
-    <div class="col-3 pl-5"></div>
+    <div class="col-3"></div>
   </div>
 </div>
