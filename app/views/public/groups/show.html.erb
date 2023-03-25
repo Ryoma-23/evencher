@@ -7,8 +7,6 @@
 
         <%= render 'public/chats/form', chat: @chat, group: @group %> <!--チャットの新規作成-->
 
-        <div class="error-alert"></div>  <!--エラーメッセージを表示-->
-
         <% if @chats.present? %>
           <div id="chats_area">
             <% @chats.each do |chat| %> <!--チャット履歴の表示-->
