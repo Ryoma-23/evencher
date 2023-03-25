@@ -1,5 +1,6 @@
 class Public::EventsController < ApplicationController
-  before_action :authenticate_user!, except: [:top]
+  before_action :authenticate_user!, except: [:top, :edit]
+  # before_action :is_matching_login_user, only: [:edit, :update, :destroy]
 
   def new
     @event = Event.new
@@ -33,11 +34,13 @@ class Public::EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
+    is_matching_login_user(@event)
     @tag_list = @event.tags.pluck(:tagname).join(',')
   end
 
   def update
     @event = Event.find(params[:id])
+    is_matching_login_user(@event)
     tag_list = params[:event][:tagname].split(',')
     if @event.update(event_params)
       @event.save_tag(tag_list)
@@ -49,6 +52,7 @@ class Public::EventsController < ApplicationController
 
   def destroy
     event = Event.find(params[:id])
+    is_matching_login_user(event)
     event.destroy
     #タグ削除
     tag_ids = []
@@ -77,5 +81,11 @@ class Public::EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:event_image, :name, :introduction, :season_start, :season_end, :time_start, :time_end, :place, :price)
+  end
+
+  def is_matching_login_user(event)
+    unless event.user_id == current_user.id
+      redirect_to events_path
+    end
   end
 end
