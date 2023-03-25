@@ -25,6 +25,7 @@ module Evencher
     # デフォルトのロケーションを日本(ja)に設定
     config.i18n.default_locale = :ja
 
+    #投稿フォームのエラーメッセージ表示時にレイアウトが崩れる原因を解消、field_with_errorの無効化
     config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }
   end
 end

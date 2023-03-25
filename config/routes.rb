@@ -1,11 +1,7 @@
 Rails.application.routes.draw do
 
-  # namespace :admin do
-  #   get 'event_comments/index'
-  # end
-
   # 顧客用
-  # URL /end_users/sign_in ...
+  # URL /users/sign_in ...
   devise_for :users,skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'

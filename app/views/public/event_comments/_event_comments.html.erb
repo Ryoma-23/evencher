@@ -16,8 +16,8 @@
             <% end %>
           </div>
         </div>
-        <div>
-          <%= event_comment.comment %>
+        <div class="text-break">
+          <%= safe_join(event_comment.comment.split("\n"),tag(:br)) %>
         </div>
       </div>
     </div>

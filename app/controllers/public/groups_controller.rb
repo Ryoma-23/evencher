@@ -4,7 +4,7 @@ class Public::GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     # チャットの表示
-    @chats = @group.chats.order(created_at: :desc)
+    @chats = @group.chats.page(params[:page]).order(created_at: :desc).per(30)
     @chat = Chat.new(group_id: @group.id)
   end
 

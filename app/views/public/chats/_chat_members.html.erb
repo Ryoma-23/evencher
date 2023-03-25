@@ -1,0 +1,27 @@
+<table class='table table-hover table-inverse'>
+  <thead>
+    <tr>
+      <th>グループ名</th>
+      <th>メンバー</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= group.name %></td>
+      <td>
+        <% group.users.each do |member| %>
+          <%= member.name %><br>
+        <% end %>
+      </td>
+      <td>
+        <div><%= link_to '退会する', event_group_withdrawal_path(group.event, group), method: :delete, class: "btn btn-sm btn-outline-danger" %></div>
+        <div>
+          <% if group.owner_id == current_user.id %>
+            <%= link_to "グループ削除", event_group_path(group.event, group), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-sm btn-outline-danger" %>
+          <% end %>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
