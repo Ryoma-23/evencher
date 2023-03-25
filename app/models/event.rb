@@ -26,6 +26,13 @@ class Event < ApplicationRecord
 
   validate :start_end_check
 
+  #開始日と終了日の逆転防止
+  def start_end_check
+    return false if season_start.blank? || season_end.blank?
+    errors.add(:season_end, "は開始日より前の日付は登録できません。") unless
+    self.season_start <= self.season_end
+  end
+
   # イベント画像
   def get_event_image
     unless event_image.attached?
@@ -33,12 +40,6 @@ class Event < ApplicationRecord
       event_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     event_image
-  end
-
-  #開始日と終了日の逆転防止
-  def start_end_check
-    errors.add(:season_end, "は開始日より前の日付は登録できません。") unless
-    self.season_start <= self.season_end
   end
 
   # 検索機能

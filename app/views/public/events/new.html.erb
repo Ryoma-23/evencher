@@ -17,10 +17,10 @@
             <dd class="col-8 mb-3"><%= f.text_area :introduction, class: "form-control information", placeholder: "ここに説明文を記述します" %></dd>
 
             <dt class="col-3 mb-3"><%= f.label :seasons, "イベント期間", class: "text-right" %></dt>
-            <dd class="col-8 mb-3"><%= f.date_field :season_start, value: @event.season_start %>〜<%= f.date_field :season_end, value: @event.season_end %></dd>
+            <dd class="col-8 mb-3"><%= f.date_field :season_start, value: @event.season_start %>~<%= f.date_field :season_end, value: @event.season_end %></dd>
 
             <dt class="col-3 mb-3"><%= f.label :times, "イベント時刻", class: "text-right" %></dt>
-            <dd class="col-8 mb-3"><%= f.time_select :time_start, value: @event.time_start %>〜<%= f.time_select :time_end, value: @event.time_end %></dd>
+            <dd class="col-8 mb-3"><%= f.time_select :time_start, value: @event.time_start %>~<%= f.time_select :time_end, value: @event.time_end %></dd>
 
             <dt class="col-3 mb-3"><%= f.label :times, "イベント場所", class: "text-right" %></dt>
             <dd class="col-8 mb-3"><%= f.text_field :place, class: "form-control place", placeholder: "イベント場所" %></dd>
