@@ -50,7 +50,7 @@ class Public::EventsController < ApplicationController
   def destroy
     event = Event.find(params[:id])
     event.destroy
-
+    #タグ削除
     tag_ids = []
     Tag.all.each do |tag|
       if tag.event_tags.count == 0

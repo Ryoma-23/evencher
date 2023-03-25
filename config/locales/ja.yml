@@ -21,3 +21,10 @@ ja:
         place: 場所
         price: 料金
         event_image: イベント画像
+  views:
+    pagination:
+      first: "&laquo; 最初"
+      last: "最後 &raquo;"
+      previous: "&lsaquo; 前"
+      next: "次 &rsaquo;"
+      truncate: "..."
