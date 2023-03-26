@@ -18,7 +18,7 @@
 
           <div class="mb-1 text-muted"><span>場所：</span><%= event.place %></div> <!--イベント場所-->
 
-          <div class="card-text text-dark mb-auto"><%= event.introduction %></div> <!--イベント説明-->
+          <div class="card-text text-dark mb-auto"><%= event.introduction.truncate(50) %></div> <!--イベント説明-->
 
           <div class="text-dark"><i class="fas fa-tag"></i> <%= event.tags.map(&:tagname).join(', ') %></div>
         </div>
