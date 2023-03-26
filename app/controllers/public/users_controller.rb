@@ -1,6 +1,6 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!, except: [:top]
-  before_action :is_matching_login_user
+  before_action :is_matching_login_user, only: [:edit, :update, :show, :withdrawal]
 
   def show
     @user = User.find(params[:id])
