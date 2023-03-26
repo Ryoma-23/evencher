@@ -1,12 +1,12 @@
-<header>
-  <nav class="navbar navbar-expand-lg navbar-danger">
+<header class="sticky-top">
+  <nav class="navbar navbar-expand-lg navbar-dark text-white ">
     <div class="container">
       <% if request.path.match(/\/admin(\/)?/) && admin_signed_in?%>
-        <a class="navbar-brand" href="/admin"><%= image_tag 'rails.png', size: '280x100' %></a>
+        <a class="navbar-brand" href="/admin"><%= image_tag 'logo.png', size: '280x100' %></a>
       <% elsif user_signed_in? %>
-        <a class="navbar-brand" href="/events"><%= image_tag 'rails.png', size: '280x100' %></a>
+        <a class="navbar-brand" href="/events"><%= image_tag 'logo.png', size: '280x100' %></a>
       <% else %>
-        <a class="navbar-brand" href="/"><%= image_tag 'rails.png', size: '280x100' %></a>
+        <a class="navbar-brand" href="/"><%= image_tag 'logo.png', size: '280x100' %></a>
       <% end %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -14,67 +14,67 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
           <% if request.path.match(/\/admin(\/)?/) && admin_signed_in?%>
-            <li>
+            <li class="nav-item">
               <%= link_to admin_users_path, class:"a-header" do %>
-                <div class="nav-link text-dark a-header rounded-pill">ユーザー管理</div>
+                <div class="nav-link a-header rounded-pill">ユーザー管理</div>
               <% end %>
             </li>
-            <li>
+            <li class="nav-item">
               <%= link_to admin_events_path, class:"a-header" do %>
-                <div class="nav-link text-dark a-header rounded-pill">投稿管理</div>
+                <div class="nav-link a-header rounded-pill">投稿管理</div>
               <% end %>
             </li>
-            <li>
+            <li class="nav-item">
               <%= link_to admin_event_comments_path, class:"a-header" do %>
-                <div class="nav-link text-dark a-header rounded-pill">コメント管理</div>
+                <div class="nav-link a-header rounded-pill">コメント管理</div>
               <% end %>
             </li>
-            <li>
+            <li class="nav-item">
               <%= link_to destroy_admin_session_path, class:"a-header", method: :delete do %>
-                <div class="nav-link text-dark a-header rounded-pill">ログアウト</div>
+                <div class="nav-link a-header rounded-pill">ログアウト</div>
               <% end %>
             </li>
           <% elsif request.path.match(/\/admin(\/)?/) %>
-            <li>
+            <li class="nav-item">
               <%= link_to new_admin_session_path, class:"a-header" do %>
-                <div class="nav-link text-dark a-header rounded-pill">ログイン</div>
+                <div class="nav-link a-header rounded-pill">ログイン</div>
               <% end %>
             </li>
           <% elsif user_signed_in? %>
-            <li>
+            <li class="nav-item">
               <%= link_to new_event_path, class:"a-header" do %>
-                <div class="nav-link text-dark a-header rounded-pill">イベント投稿</div>
+                <div class="nav-link a-header rounded-pill">イベント投稿</div>
               <% end %>
             </li>
-            <li>
+            <li class="nav-item">
               <%= link_to events_path, class:"a-header" do %>
-                <div class="nav-link text-dark a-header rounded-pill">イベント一覧</div>
+                <div class="nav-link a-header rounded-pill">イベント一覧</div>
               <% end %>
             </li>
-            <li>
+            <li class="nav-item">
               <%= link_to user_path(current_user.id), class:"a-header" do %>
-                <div class="nav-link text-dark a-header rounded-pill">マイページ</div>
+                <div class="nav-link a-header rounded-pill">マイページ</div>
               <% end %>
             </li>
-            <li>
+            <li class="nav-item">
               <%= link_to destroy_user_session_path, class:"a-header", method: :delete do %>
-                <div class="nav-link text-dark a-header rounded-pill">ログアウト</div>
+                <div class="nav-link a-header rounded-pill">ログアウト</div>
               <% end %>
             </li>
           <% else %>
-            <li>
+            <li class="nav-item">
               <%= link_to new_user_registration_path, class:"a-header" do %>
-                <div class="nav-link text-dark a-header rounded-pill">アカウント作成</div>
+                <div class="nav-link a-header rounded-pill">アカウント作成</div>
               <% end %>
             </li>
-            <li>
+            <li class="nav-item">
               <%= link_to new_user_session_path, class:"a-header" do %>
-                <div class="nav-link text-dark a-header rounded-pill">ログイン</div>
+                <div class="nav-link a-header rounded-pill">ログイン</div>
               <% end %>
             </li>
-            <li>
+            <li class="nav-item">
               <%= link_to users_guest_sign_in_path, class:"a-header", method: :post do %>
-                <div class="nav-link text-dark a-header rounded-pill">ゲストログイン(閲覧用)</div>
+                <div class="nav-link a-header rounded-pill">ゲストログイン(閲覧用)</div>
               <% end %>
             </li>
           <% end %>

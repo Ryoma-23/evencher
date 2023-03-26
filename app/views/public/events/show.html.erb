@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row justify-content-center my-5">
+  <div class="row justify-content-center mt-5">
     <div class="col-lg-8">
       <div class="modal-body text-center mb-3">
         <!--イベント詳細-->
@@ -16,7 +16,7 @@
             <%= l @event.season_start %>〜<%= l @event.season_end %>
           <% end %>
         </p>
-        <%= image_tag @event.get_event_image, size: "300x300", class: "img-fluid d-block mx-auto mb-3" %> <!--イベントイメージ-->
+        <div class="img-container"><%= image_tag @event.get_event_image, size: "300x300", class: "img-fluid d-block mx-auto mb-3" %></div> <!--イベントイメージ-->
         <p><%= safe_join(@event.introduction.split("\n"),tag(:br)) %></p> <!--イベント説明-->
         <ul class="list-inline">
           <li>
@@ -53,7 +53,7 @@
 
 
       <div>
-        <h5><%= image_tag @event.user.get_profile_image, size: "50x50", class: "rounded-circle" %> <%= @event.user.name %></h5>
+        <h5 class="img-container"><%= image_tag @event.user.get_profile_image, size: "50x50", class: "rounded-circle" %> <%= @event.user.name %></h5>
         <div class="mb-3">投稿日:<%= l @event.created_at %></div>
 
         </div>

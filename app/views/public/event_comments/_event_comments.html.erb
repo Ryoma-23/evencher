@@ -1,7 +1,7 @@
 <% if event.event_comments.present? %>
   <% event.event_comments.order(created_at: :desc).each do |event_comment| %>
     <div class="d-flex mb-3">
-      <div>
+      <div class="img-container">
         <%= image_tag event_comment.user.get_profile_image, size: "50x50", class: "rounded-circle mr-2" %>
       </div>
       <div>

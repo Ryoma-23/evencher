@@ -1,12 +1,25 @@
+/*フッター固定*/
+html, body { height: 100%;}
+
+body > footer {
+  position: sticky;
+  top: 100vh;
+}
+
+header {
+  background-color: #159895;
+}
+
+footer {
+  background-color: #57C5B6;
+}
+
+
 /*button_linkの変更*/
 .button_border_none {
   border: none;
   background: transparent;
 }
-
-/*.container {*/
-/*  background-color: #e6e6fa !important;*/
-/*}*/
 
 /*ページネーションデザイン修正*/
 .pagination>li>a {
@@ -17,3 +30,12 @@
     background-color: #93c9ff !important;
     border-color: #93c9ff !important;
   }
+
+/*画像を変形させずに表示*/
+.img-container img {
+  object-fit: cover;
+}
+
+.card-body {
+  background-color: #f8f8ff;
+}
