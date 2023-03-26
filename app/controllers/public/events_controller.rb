@@ -1,5 +1,5 @@
 class Public::EventsController < ApplicationController
-  before_action :authenticate_user!, except: [:top, :edit]
+  before_action :authenticate_user!, except: [:top]
   # before_action :is_matching_login_user, only: [:edit, :update, :destroy]
 
   def new
