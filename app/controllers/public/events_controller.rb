@@ -43,6 +43,14 @@ class Public::EventsController < ApplicationController
     tag_list = params[:event][:tagname].split(',')
     if @event.update(event_params)
       @event.save_tag(tag_list)
+      #タグ削除
+      tag_ids = []
+      Tag.all.each do |tag|
+        if tag.event_tags.count == 0
+          tag_ids.push(tag.id)
+        end
+      end
+      Tag.where(id: tag_ids).destroy_all
       redirect_to event_path(@event.id)
     else
       render :edit
