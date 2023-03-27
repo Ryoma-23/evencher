@@ -39,7 +39,7 @@
         </ul>
         <div class="text-dark text-break"><i class="fas fa-tag"></i> <%= @event.tags.map(&:tagname).join(', ') %></div>
         <div class="mt-3">
-          <%= link_to "イベントを削除する", event_path(@event), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger rounded-pill" %>
+          <%= link_to "イベントを削除する", admin_event_path(@event), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger rounded-pill" %>
         </div>
       </div>
     </div>
