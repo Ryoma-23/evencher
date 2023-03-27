@@ -30,10 +30,14 @@
           </li>
           <li>
             <strong>料金: </strong>
-            <% if @event.price == 0 %>
-              無料
+            <% if @event.price.present? %>
+              <% if @event.price == 0 %>
+                無料
+              <% else %>
+                <%= @event.price.to_s(:delimited) %>円
+              <% end %>
             <% else %>
-              <%= @event.price.to_s(:delimited) %>円
+              未設定
             <% end %>
           </li>
         </ul>
