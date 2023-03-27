@@ -11,6 +11,14 @@ class Admin::EventsController < ApplicationController
   def destroy
     event = Event.find(params[:id])
     event.destroy
+    #タグ削除
+    tag_ids = []
+    Tag.all.each do |tag|
+      if tag.event_tags.count == 0
+        tag_ids.push(tag.id)
+      end
+    end
+    Tag.where(id: tag_ids).destroy_all
     redirect_to admin_events_path
   end
 end
