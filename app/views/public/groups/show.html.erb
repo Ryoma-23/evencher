@@ -7,18 +7,17 @@
 
         <%= render 'public/chats/form', chat: @chat, group: @group %> <!--チャットの新規作成-->
 
-        <% if @chats.present? %>
-          <div id="chats_area">
-            <% @chats.each do |chat| %> <!--チャット履歴の表示-->
-              <%= render 'public/chats/group_chats', chat: chat %>
-            <% end %>
-            <div class="row justify-content-center mt-5">
-              <%= paginate @chats %>
-            </div>
+        <div id="chats_area">
+          <% if @chats.blank? %>
+            <div id="no-chat">チャットはまだありません</div>
+          <% end %>
+          <% @chats.each do |chat| %> <!--チャット履歴の表示-->
+            <%= render 'public/chats/group_chats', chat: chat %>
+          <% end %>
+          <div class="row justify-content-center mt-5">
+            <%= paginate @chats %>
           </div>
-        <% else %>
-          <p>チャットはまだありません</p>
-        <% end %>
+        </div>
       </div>
     </div>
     <div class="col-5">

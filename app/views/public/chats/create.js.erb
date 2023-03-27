@@ -1,3 +1,6 @@
 $("#chats_area").prepend("<%= j(render 'public/chats/group_chats', chat: @chat) %>");
+if($('#no-chat').length){
+  $('#no-chat').remove()
+}
 
 $('#chat_message').val("");

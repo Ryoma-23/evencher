@@ -12,9 +12,9 @@
       <td><%= group.name %> (<%= group.users.count %>)</td>
       <td>
         <% if group.users.include?(current_user) %>
-          <%= link_to "chatを始める", event_group_path(group.event, group), class: "btn btn-sm btn-info rounded-pill" %>
+          <%= link_to "chatを始める", event_group_path(group.event, group), class: "btn btn-sm btn-info rounded-pill",data: {"turbolinks"=>false} %>
         <% else %>
-          <%= link_to '参加する', event_group_join_path(group.event, group), class: "btn btn-sm btn-success rounded-pill" %>
+          <%= link_to '参加する', event_group_join_path(group.event, group), class: "btn btn-sm btn-success rounded-pill",data: {"turbolinks"=>false} %>
         <% end %>
       </td>
     </tr>
