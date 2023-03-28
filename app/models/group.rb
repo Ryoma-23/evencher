@@ -4,6 +4,4 @@ class Group < ApplicationRecord
   has_many :chats, dependent: :destroy #グループはたくさんのメッセージを持っている
 
   belongs_to :event
-
-  validates :name, presence: true
 end

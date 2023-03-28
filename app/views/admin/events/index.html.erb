@@ -6,11 +6,12 @@
     <table class="table table-hover table-inverse">
       <thead>
         <tr>
-          <th>ユーザー名</th>
+          <th style="width: 40%">ユーザー名</th>
           <th>イベント名</th>
         </tr>
       </thead>
       <tbody>
+        <!--イベント一覧表示-->
       <% @events.each do |event| %>
         <tr>
           <td><%= event.user.name %></td>
@@ -20,6 +21,7 @@
       </tbody>
     </table>
   </div>
+  <!--ページネーション-->
   <div class="row justify-content-center mt-5">
     <%= paginate @events %>
   </div>

@@ -4,14 +4,13 @@
       <h2>グループチャット</h2>
       <!--チャットフォーム-->
       <div>
-
         <%= render 'public/chats/form', chat: @chat, group: @group %> <!--チャットの新規作成-->
 
-        <div id="chats_area">
+        <div id="chats_area"> <!--チャット履歴の表示-->
           <% if @chats.blank? %>
             <div id="no-chat">チャットはまだありません</div>
           <% end %>
-          <% @chats.each do |chat| %> <!--チャット履歴の表示-->
+          <% @chats.each do |chat| %>
             <%= render 'public/chats/group_chats', chat: chat %>
           <% end %>
           <div class="row justify-content-center mt-5">

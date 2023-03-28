@@ -13,8 +13,8 @@
             <%= l @event.season_start %>〜<%= l @event.season_end %>
           <% end %>
         </p>
-        <div class="img-container"><%= image_tag @event.get_event_image, size: "300x300", class: "img-fluid d-block mx-auto mb-3" %></div>
-        <p><%= safe_join(@event.introduction.split("\n"),tag(:br)) %></p>
+        <div class="img-container"><%= image_tag @event.get_event_image, size: "300x300", class: "img-fluid d-block mx-auto mb-3" %></div> <!--イベント画像-->
+        <p><%= safe_join(@event.introduction.split("\n"),tag(:br)) %></p> <!--イベント詳細-->
         <ul class="list-inline">
           <li>
             <strong>時間: </strong>
@@ -41,7 +41,7 @@
             <% end %>
           </li>
         </ul>
-        <div class="text-dark text-break"><i class="fas fa-tag"></i> <%= @event.tags.map(&:tagname).join(', ') %></div>
+        <div class="text-dark text-break"><i class="fas fa-tag"></i> <%= @event.tags.map(&:tagname).join(', ') %></div> <!--タグ-->
         <div class="mt-3">
           <%= link_to "イベントを削除する", admin_event_path(@event), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger rounded-pill" %>
         </div>

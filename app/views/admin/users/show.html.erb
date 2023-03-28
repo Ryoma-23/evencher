@@ -15,7 +15,7 @@
   <div class="row my-5">
     <% @event.each do |event| %>
       <div class="col-md-7 mx-auto">
-        <%= link_to event_path(event.id) do %>
+        <%= link_to admin_event_path(event.id) do %>
           <div class="card flex-md-row mb-4 shadow-sm h-md-250">
             <%= image_tag event.get_event_image, size: "200x250", class: "card-img-left flex-auto d-none d-lg-block" %>
             <div class="card-body d-flex flex-column align-items-start">

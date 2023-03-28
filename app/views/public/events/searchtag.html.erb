@@ -3,12 +3,14 @@
   <div class="row mt-5">
     <div class="col-2"></div>
     <div class="col-6 mx-auto">
+      <!--投稿一覧-->
       <%= render "public/events/index", events: @events %>
       <div class="row justify-content-center mt-5">
         <%= paginate @events %>
       </div>
     </div>
     <div class="col-3">
+      <!--検索欄-->
       <div class="search_form">
         <h5 class="mb-2 border-bottom text-center"><span>イベント検索</span></h5>
         <%= render 'layouts/search' %>

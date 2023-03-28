@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
 
-  validates :name, presence: true
+  validates :name, presence: true, length: { maximum: 20 }
   validates :email, presence: true
   #イベントのリレーション
   has_many :events, dependent: :destroy

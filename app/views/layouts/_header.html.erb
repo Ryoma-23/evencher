@@ -1,6 +1,7 @@
-<header class="sticky-top">
+<header>
   <nav class="navbar navbar-expand-lg navbar-dark text-white ">
     <div class="container">
+      <!--ロゴ-->
       <% if request.path.match(/\/admin(\/)?/) && admin_signed_in?%>
         <a class="navbar-brand" href="/admin"><%= image_tag 'logo.png', size: '280x100' %></a>
       <% elsif user_signed_in? %>
@@ -8,9 +9,11 @@
       <% else %>
         <a class="navbar-brand" href="/"><%= image_tag 'logo.png', size: '280x100' %></a>
       <% end %>
+      <!--ハンバーガーメニュー-->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      <!--メニュー-->
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
           <% if request.path.match(/\/admin(\/)?/) && admin_signed_in?%>

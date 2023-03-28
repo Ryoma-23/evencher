@@ -12,6 +12,7 @@
         </tr>
       </thead>
       <tbody>
+        <!--コメント一覧表示-->
         <% @event_comments.each do |event_comment| %>
           <tr>
             <td><%= event_comment.user.name %></td>
@@ -19,7 +20,7 @@
             <td class="text-break">
               <%= event_comment.comment %>
               <%= link_to admin_event_comment_path(event_comment.id), method: :delete, class: "text-reset text-break" do %>
-                <i class="fas fa-trash-alt"></i>
+                <i class="fas fa-trash-alt"></i> <!--ゴミ箱アイコン-->
               <% end %>
             </td>
           </tr>
@@ -27,6 +28,7 @@
       </tbody>
     </table>
   </div>
+  <!--ページネーション-->
   <div class="row justify-content-center mt-5">
     <%= paginate @event_comments %>
   </div>
