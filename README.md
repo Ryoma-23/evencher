@@ -22,14 +22,10 @@
 * 興味のあることのイベント情報を探したい時
 
 ## 設計書
-
++ [ER図](https://drive.google.com/file/d/14NtLXH_LQxv_2KPYQE6knPBHOzUcYJ_P/view?usp=sharing)
++ [テーブル定義書](https://docs.google.com/spreadsheets/d/1Y8b3pgDbWsiRyHGEpR--TOvPyClFGpDh/edit?usp=sharing&ouid=101339252281227293277&rtpof=true&sd=true)
++ [アプリケーション詳細設計書](https://docs.google.com/spreadsheets/d/1ugvtc1d12rCv7gLYcyOGk87xVi9ddwtd_g55OrwVNYM/edit?usp=sharing)
 
 ## 開発環境
-- OS：Linux(CentOS)
-- 言語：HTML,CSS,JavaScript,Ruby,SQL
-- フレームワーク：Ruby on Rails
-- JSライブラリ：jQuery
-- IDE：Cloud9
-
-## 使用素材
-- 使用検討中です
++ Ruby 3.1.2
++ Ruby on Rails 6.1.7.2
