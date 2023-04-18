@@ -1,5 +1,6 @@
 class Public::EventsController < ApplicationController
   before_action :authenticate_user!, except: [:top]
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   def new
     @event = Event.new
@@ -94,5 +95,9 @@ class Public::EventsController < ApplicationController
     unless event.user_id == current_user.id
       redirect_to events_path
     end
+  end
+  
+  def record_not_found
+    redirect_to events_path
   end
 end

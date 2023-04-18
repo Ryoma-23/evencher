@@ -1,6 +1,7 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!, except: [:top]
   before_action :is_matching_login_user, only: [:edit, :update, :show]
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   def show
     @user = User.find(params[:id])
@@ -44,5 +45,9 @@ class Public::UsersController < ApplicationController
     unless user.id == current_user.id
       redirect_to events_path
     end
+  end
+  
+  def record_not_found
+    redirect_to events_path
   end
 end
