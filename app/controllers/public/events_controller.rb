@@ -60,7 +60,6 @@ class Public::EventsController < ApplicationController
 
   def destroy
     event = Event.find(params[:id])
-    is_matching_login_user(@event)
     event.destroy
     #タグ削除
     tag_ids = []
